@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"cscie55.hw1.elevator","l":"Elevator"}]
