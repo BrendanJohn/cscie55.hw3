@@ -47,8 +47,7 @@ public class Elevator {
     /**
     * Requirement: Return the Elevator's current floor number. I.e., this is the number of the floor reached by the last call to Elevator.move()
     */
-    public int getCurrentFloor() {
-        
+    public int getCurrentFloor() {       
         return building.currentFloor;
     }
 
@@ -105,8 +104,15 @@ public class Elevator {
     * @param destinationFloor an integer indicating the destination of the incoming passenger
     */
     public void boardPassenger(int destinationFloor) {
-        passengersToFloor[destinationFloor - 1]++;
-        numPassengers++;
+        if (numPassengers < CAPACITY) 
+        {       
+            passengersToFloor[destinationFloor - 1]++;
+            numPassengers++;
+        }
+        else 
+        {
+            System.out.println("Elevator is full, no more passengers accepted");
+        }
     }
 
     /**
