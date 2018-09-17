@@ -20,13 +20,13 @@ public class Elevator {
     /**
     * Requirement: Define a field for tracking the Elevator's direction of travel
     */
-    private boolean goingUp;
+    private boolean goingUp = true;;
 
     /**
     * Requirement: Define an array-valued field for tracking, for each floor, the number of passengers destined for
     * that floor
     */
-    private int[] passengersToFloor;
+    private int[] passengersToFloor = new int[8];
 
     private int numPassengers = 0;
     
@@ -38,9 +38,6 @@ public class Elevator {
     * Requirement: Replace the Elevator() constructor by Elevator(Building building)
     */
     public Elevator(Building building) {
-        goingUp = true;
-        numPassengers = 0;
-        passengersToFloor = new int[8];
         this.building = building;
     }
 
