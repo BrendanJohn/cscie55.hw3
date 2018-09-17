@@ -10,11 +10,7 @@ package cscie55.hw2;
  *******************************************************************************************************/
 
 public class Elevator {
-
-    /**
-    * Requirement: Define a constant for the number of floors in the building, and set it to 7
-    */
-    static final int FLOOR_COUNT = 7;
+    
 
     /**
     * Requirement: Final static field that stores the number of passengers that the Elevator can accommodate
@@ -42,7 +38,7 @@ public class Elevator {
     public Elevator(Building building) {
         goingUp = true;
         numPassengers = 0;
-        passengersToFloor = new int[FLOOR_COUNT + 1];
+        passengersToFloor = new int[8];
         this.building = building;
     }
 
@@ -70,7 +66,7 @@ public class Elevator {
             //increments the current floor
             building.currentFloor++;
             //modifies the direction of travel
-            if (building.currentFloor == FLOOR_COUNT) {
+            if (building.currentFloor == building.FLOORS) {
                 goingUp = false;
             }
         } else {

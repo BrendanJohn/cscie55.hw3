@@ -15,6 +15,8 @@ public class Building {
     * Requirement: A static final field storing the number of floors in the building
     */
     public static final int FLOORS = 7;
+    
+    private Floor[] floors = new Floor[FLOORS + 1];;
 
     /**
     * Requirement: Define a field for tracking the Elevator's current floor
@@ -22,6 +24,7 @@ public class Building {
     public int currentFloor = 1;
     
     public Elevator elevator;
+    
 
     /**
     * Requirement: The Building constructor creates an Elevator, and one floor for each floor number
@@ -30,6 +33,10 @@ public class Building {
     public Building() {
         Elevator elevator = new Elevator(this);
         this.elevator = elevator;
+        for (int i = 1; i <=FLOORS; i++) {
+            Floor floor = new Floor(this, i);
+            this.floors[i] = floor;
+        }
     }
 
     /**
@@ -44,7 +51,7 @@ public class Building {
     *@param floorNumber - Int the number of the floor
     */
     public Floor getFloor(int floorNumber) {
-        return null;
+        return this.floors[floorNumber];
     }
 
   }

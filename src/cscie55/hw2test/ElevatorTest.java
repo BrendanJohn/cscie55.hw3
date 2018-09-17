@@ -39,8 +39,9 @@ public class ElevatorTest
             checkElevator(elevator, expectedFloorNumber, 0);
         }
         assertEquals(1, expectedFloorNumber);
+        System.out.println("test 1 completed successfully");
     }
-    /**
+    
     // Check that passengers get on and off correctly.
     @Test
     public void disembark() throws ElevatorFullException
@@ -68,8 +69,9 @@ public class ElevatorTest
         checkElevator(elevator, 6, 0);
         elevator.move();
         checkElevator(elevator, 7, 0);
+        System.out.println("test 2 completed successfully");
     }
-
+    /**
     // Check that passengers on higher floors can call and board the elevator, and then
     // disembark on the ground floor.
     @Test
@@ -141,10 +143,11 @@ public class ElevatorTest
     */
     private void checkElevator(Elevator elevator, int floorNumber, int passengers)
         {
-            System.out.println("elevator expected at floor number " + floorNumber);
-            System.out.println("elevator is " + elevator);
-            System.out.println("elevator actually at floor number " + elevator.getCurrentFloor());
+            System.out.println("elevator expected at floor " + floorNumber);
+            System.out.println("elevator is at floor " + elevator.getCurrentFloor());
             assertEquals(floorNumber, elevator.getCurrentFloor());
+            System.out.println("elevator expected to contain " + passengers + " passengers");
+            System.out.println("elevator contains " + elevator.getPassengers() + " passengers");
             assertEquals(passengers, elevator.getPassengers());
           }
     }
