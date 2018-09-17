@@ -29,6 +29,8 @@ public class Elevator {
     private int[] passengersToFloor;
 
     private int numPassengers;
+    
+    private int passengersWaiting;
 
     private Building building;
 
@@ -77,6 +79,17 @@ public class Elevator {
                 goingUp = true;
             }
         }
+        //pick up waiting passengers
+        if (building.getFloor(building.currentFloor).getPassengersWaiting() > 0) 
+        {
+            this.passengersWaiting = building.getFloor(building.currentFloor).getPassengersWaiting();
+                for (int i = 1; i <=this.passengersWaiting; i++) 
+                {
+                    boardPassenger(1);
+                }
+            building.getFloor(building.currentFloor).clearPassengersWaiting();
+        }
+        
         //Clears the array entry tracking the number of passengers destined for the floor that the elevator
         //has just arrived at
         numPassengers = (numPassengers - passengersToFloor[building.currentFloor - 1]);

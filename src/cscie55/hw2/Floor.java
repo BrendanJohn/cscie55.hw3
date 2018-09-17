@@ -13,6 +13,7 @@ public class Floor {
 
     private int floorNumber;
     private Building building;
+    private int passengersWaiting = 0;
     
     /**
     * Requirement: a floor constructor that takes building and floornumber as parameters
@@ -29,15 +30,19 @@ public class Floor {
     * Requirement: Returns the number of passengers on the Floor who are waiting for the Elevator
     */
     public int getPassengersWaiting() {
-        return 1;
+        return this.passengersWaiting;
     }
+    
+     public void clearPassengersWaiting() {
+         this.passengersWaiting = 0;
+     }
 
     /**
     * Requirement: Called when a passenger on the Floor wants to wait for the Elevator
     * Calling this should cause the Elevator to stop the next time it moves to the Floor
     */
     public void waitForElevator() {
-
+        passengersWaiting++;
     }
 
 
