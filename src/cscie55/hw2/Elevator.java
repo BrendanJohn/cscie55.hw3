@@ -43,12 +43,14 @@ public class Elevator {
         goingUp = true;
         numPassengers = 0;
         passengersToFloor = new int[FLOOR_COUNT + 1];
+        this.building = building;
     }
 
     /**
     * Requirement: Return the Elevator's current floor number. I.e., this is the number of the floor reached by the last call to Elevator.move()
     */
     public int getCurrentFloor() {
+        
         return building.currentFloor;
     }
 

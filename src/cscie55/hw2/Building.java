@@ -20,21 +20,23 @@ public class Building {
     * Requirement: Define a field for tracking the Elevator's current floor
     */
     public int currentFloor = 1;
+    
+    public Elevator elevator;
 
     /**
     * Requirement: The Building constructor creates an Elevator, and one floor for each floor number
     * (Move the variable currentFloor that was in the Elevator class in homework 1 to the Building class.)
     */
     public Building() {
-        Building building = new Building();
-        Elevator elevator = new Elevator(building);
+        Elevator elevator = new Elevator(this);
+        this.elevator = elevator;
     }
 
     /**
     * Requirement: Returns the building's Elevator
     */
     public Elevator getElevator() {
-        return null;
+        return this.elevator;
     }
 
     /**

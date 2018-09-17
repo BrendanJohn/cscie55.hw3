@@ -141,6 +141,9 @@ public class ElevatorTest
     */
     private void checkElevator(Elevator elevator, int floorNumber, int passengers)
         {
+            System.out.println("elevator expected at floor number " + floorNumber);
+            System.out.println("elevator is " + elevator);
+            System.out.println("elevator actually at floor number " + elevator.getCurrentFloor());
             assertEquals(floorNumber, elevator.getCurrentFloor());
             assertEquals(passengers, elevator.getPassengers());
           }
