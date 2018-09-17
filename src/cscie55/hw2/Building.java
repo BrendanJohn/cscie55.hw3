@@ -21,7 +21,7 @@ public class Building {
     /**
     * Requirement: Define a field for tracking the Elevator's current floor
     */
-    public int currentFloor = 1;
+    private int currentFloor = 1;
     
     public Elevator elevator;
     
@@ -52,6 +52,14 @@ public class Building {
     */
     public Floor getFloor(int floorNumber) {
         return this.floors[floorNumber];
+    }
+    
+    public int getCurrentFloor() {
+        return this.currentFloor;
+    }
+    
+    public void setCurrentFloor(int floorNum) {
+         this.currentFloor = floorNum;
     }
 
   }

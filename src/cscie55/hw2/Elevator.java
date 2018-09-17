@@ -45,7 +45,7 @@ public class Elevator {
     * Requirement: Return the Elevator's current floor number. I.e., this is the number of the floor reached by the last call to Elevator.move()
     */
     public int getCurrentFloor() {       
-        return building.currentFloor;
+        return building.getCurrentFloor();
     }
 
     /**
@@ -62,16 +62,16 @@ public class Elevator {
 
         if (goingUp == true) {
             //increments the current floor
-            building.currentFloor++;
+            building.setCurrentFloor(building.getCurrentFloor() + 1);
             //modifies the direction of travel
-            if (building.currentFloor == building.FLOORS) {
+            if (building.getCurrentFloor() == building.FLOORS) {
                 goingUp = false;
             }
         } else {
             //decrements the current floor
-            building.currentFloor--;
+            building.setCurrentFloor(building.getCurrentFloor() - 1);
             //modifies the direction of travel
-            if (building.currentFloor == 1) {
+            if (building.getCurrentFloor() == 1) {
                 goingUp = true;
             }
         }
@@ -88,8 +88,8 @@ public class Elevator {
                
         //Clears the array entry tracking the number of passengers destined for the floor that the elevator
         //has just arrived at
-        numPassengers = (numPassengers - passengersToFloor[building.currentFloor - 1]);
-        passengersToFloor[building.currentFloor - 1] = 0;
+        numPassengers = (numPassengers - passengersToFloor[building.getCurrentFloor() - 1]);
+        passengersToFloor[building.getCurrentFloor() - 1] = 0;
 
         //prints out the status of the elevator
         this.toString();
@@ -97,25 +97,25 @@ public class Elevator {
 
     public void fillToCapacity() {
     
-         if (building.getFloor(building.currentFloor).getPassengersWaiting() > 0) 
+         if (building.getFloor(building.getCurrentFloor()).getPassengersWaiting() > 0) 
          {
-             if (building.getFloor(building.currentFloor).getPassengersWaiting() >= CAPACITY)
+             if (building.getFloor(building.getCurrentFloor()).getPassengersWaiting() >= CAPACITY)
              {
-                 this.passengersWaiting = building.getFloor(building.currentFloor).getPassengersWaiting();
+                 this.passengersWaiting = building.getFloor(building.getCurrentFloor()).getPassengersWaiting();
                  for (int i = 1; i <=CAPACITY; i++) 
                  {
                       boardPassenger(1);
                  }
-                 building.getFloor(building.currentFloor).clearPassengers(CAPACITY);  
+                 building.getFloor(building.getCurrentFloor()).clearPassengers(CAPACITY);  
              }
              else
              {
-                 this.passengersWaiting = building.getFloor(building.currentFloor).getPassengersWaiting();
+                 this.passengersWaiting = building.getFloor(building.getCurrentFloor()).getPassengersWaiting();
                  for (int i = 1; i <=this.passengersWaiting; i++) 
                  {
                      boardPassenger(1);
                  }
-                 building.getFloor(building.currentFloor).clearPassengers(this.passengersWaiting);
+                 building.getFloor(building.getCurrentFloor()).clearPassengers(this.passengersWaiting);
              }
          }
     }
@@ -135,9 +135,9 @@ public class Elevator {
     */
     public String toString() {
         if (numPassengers == 1) {
-            return "Floor " + Integer.toString(building.currentFloor) + ": " + Integer.toString(numPassengers) + " passenger";
+            return "Floor " + Integer.toString(building.getCurrentFloor()) + ": " + Integer.toString(numPassengers) + " passenger";
         } else {
-            return "Floor " + Integer.toString(building.currentFloor) + ": " + Integer.toString(numPassengers) + " passengers";
+            return "Floor " + Integer.toString(building.getCurrentFloor()) + ": " + Integer.toString(numPassengers) + " passengers";
         }
     }
 
