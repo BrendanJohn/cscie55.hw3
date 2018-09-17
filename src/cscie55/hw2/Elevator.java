@@ -28,9 +28,9 @@ public class Elevator {
     */
     private int[] passengersToFloor;
 
-    private int numPassengers;
+    private int numPassengers = 0;
     
-    private int passengersWaiting;
+    private int passengersWaiting = 0;
 
     private Building building;
 

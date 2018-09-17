@@ -11,8 +11,10 @@ package cscie55.hw2;
 
 public class Floor {
 
-    private int floorNumber;
+    private int floorNumber = 0;
+    
     private Building building;
+    
     private int passengersWaiting = 0;
     
     /**
