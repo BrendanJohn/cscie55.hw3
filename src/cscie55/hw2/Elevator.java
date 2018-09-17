@@ -19,7 +19,7 @@ public class Elevator {
     /**
     * Requirement: Final static field that stores the number of passengers that the Elevator can accommodate
     */
-    static final int CAPACITY = 10;
+    public static final int CAPACITY = 10;
 
     /**
     * Requirement: Define a field for tracking the Elevator's direction of travel

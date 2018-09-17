@@ -14,7 +14,7 @@ public class Building {
     /**
     * Requirement: A static final field storing the number of floors in the building
     */
-    static final int FLOORS = 7;
+    public static final int FLOORS = 7;
 
     /**
     * Requirement: Define a field for tracking the Elevator's current floor
