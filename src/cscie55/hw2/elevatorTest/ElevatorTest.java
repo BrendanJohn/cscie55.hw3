@@ -1,10 +1,10 @@
-package cscie55.hw1.elevatorTest;
+package cscie55.hw2.elevatorTest;
 
-import cscie55.hw1.elevator.Elevator;
+import cscie55.hw2.elevator.Elevator;
 /******************************
 * 
 * name: Brendan Murphy
-* CSCIE-55 HW 1
+* CSCIE-55 HW 2
 * date: 09/16/2018
 *
 * Defines an elevator test class that tests the elevator class

@@ -1,9 +1,9 @@
-package cscie55.hw1.elevator;
+package cscie55.hw2.elevator;
 
 /******************************
 * 
 * name: Brendan Murphy
-* CSCIE-55 HW 1
+* CSCIE-55 HW 2
 * date: 09/16/2018
 *
 * Defines an elevator class that traverses a building and drops off passengers on their requested floors
