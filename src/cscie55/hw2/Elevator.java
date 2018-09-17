@@ -40,7 +40,6 @@ public class Elevator {
     * Requirement: Replace the Elevator() constructor by Elevator(Building building)
     */
     public Elevator(Building building) {
-        currentFloor = 1;
         goingUp = true;
         numPassengers = 0;
         passengersToFloor = new int[FLOOR_COUNT + 1];
@@ -50,7 +49,7 @@ public class Elevator {
     * Requirement: Return the Elevator's current floor number. I.e., this is the number of the floor reached by the last call to Elevator.move()
     */
     public int getCurrentFloor() {
-        return this.currentFloor;
+        return 1;
     }
 
     /**
@@ -67,23 +66,23 @@ public class Elevator {
 
         if (goingUp == true) {
             //increments the current floor
-            currentFloor++;
+            building.currentFloor++;
             //modifies the direction of travel
-            if (currentFloor == FLOOR_COUNT) {
+            if (building.currentFloor == FLOOR_COUNT) {
                 goingUp = false;
             }
         } else {
             //decrements the current floor
-            currentFloor--;
+            building.currentFloor--;
             //modifies the direction of travel
-            if (currentFloor == 1) {
+            if (building.currentFloor == 1) {
                 goingUp = true;
             }
         }
         //Clears the array entry tracking the number of passengers destined for the floor that the elevator
         //has just arrived at
-        numPassengers = (numPassengers - passengersToFloor[currentFloor - 1]);
-        passengersToFloor[currentFloor - 1] = 0;
+        numPassengers = (numPassengers - passengersToFloor[building.currentFloor - 1]);
+        passengersToFloor[building.currentFloor - 1] = 0;
 
         //prints out the status of the elevator
         this.toString();
@@ -104,9 +103,9 @@ public class Elevator {
     */
     public String toString() {
         if (numPassengers == 1) {
-            return "Floor " + Integer.toString(currentFloor) + ": " + Integer.toString(numPassengers) + " passenger";
+            return "Floor " + Integer.toString(building.currentFloor) + ": " + Integer.toString(numPassengers) + " passenger";
         } else {
-            return "Floor " + Integer.toString(currentFloor) + ": " + Integer.toString(numPassengers) + " passengers";
+            return "Floor " + Integer.toString(building.currentFloor) + ": " + Integer.toString(numPassengers) + " passengers";
         }
     }
 

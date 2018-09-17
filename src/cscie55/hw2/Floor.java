@@ -22,7 +22,7 @@ public class Floor {
     */
     Floor(Building building, int floorNumber) {
         this.building = building;
-        this.floorNumber = floornumber;
+        this.floorNumber = 1;
     }
 
     /**
