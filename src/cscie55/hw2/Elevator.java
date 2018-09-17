@@ -78,17 +78,17 @@ public class Elevator {
                 goingUp = true;
             }
         }
-        //pick up waiting passengers
-        if (building.getFloor(building.currentFloor).getPassengersWaiting() > 0) 
+              
+        if (numPassengers < CAPACITY)
+        //only pick up waiting passengers when not at capacity
         {
-            this.passengersWaiting = building.getFloor(building.currentFloor).getPassengersWaiting();
-                for (int i = 1; i <=this.passengersWaiting; i++) 
-                {
-                    boardPassenger(1);
-                }
-            building.getFloor(building.currentFloor).clearPassengersWaiting();
+            fillToCapacity();
         }
-        
+        else 
+        {
+            System.out.println("Elevator is full, no more passengers accepted");
+        }
+               
         //Clears the array entry tracking the number of passengers destined for the floor that the elevator
         //has just arrived at
         numPassengers = (numPassengers - passengersToFloor[building.currentFloor - 1]);
@@ -98,21 +98,39 @@ public class Elevator {
         this.toString();
     }
 
+    public void fillToCapacity() {
+    
+         if (building.getFloor(building.currentFloor).getPassengersWaiting() > 0) 
+         {
+             if (building.getFloor(building.currentFloor).getPassengersWaiting() >= CAPACITY)
+             {
+                 this.passengersWaiting = building.getFloor(building.currentFloor).getPassengersWaiting();
+                 for (int i = 1; i <=CAPACITY; i++) 
+                 {
+                      boardPassenger(1);
+                 }
+                 building.getFloor(building.currentFloor).clearPassengers(CAPACITY);  
+             }
+             else
+             {
+                 this.passengersWaiting = building.getFloor(building.currentFloor).getPassengersWaiting();
+                 for (int i = 1; i <=this.passengersWaiting; i++) 
+                 {
+                     boardPassenger(1);
+                 }
+                 building.getFloor(building.currentFloor).clearPassengers(this.passengersWaiting);
+             }
+         }
+    }
+    
     /**
     * Requirement: Board a passenger who wants to ride to the indicated floor
     * this method boards a single passenger and may throw an ElevatorFullException
     * @param destinationFloor an integer indicating the destination of the incoming passenger
     */
-    public void boardPassenger(int destinationFloor) {
-        if (numPassengers < CAPACITY) 
-        {       
+    public void boardPassenger(int destinationFloor) {      
             passengersToFloor[destinationFloor - 1]++;
             numPassengers++;
-        }
-        else 
-        {
-            System.out.println("Elevator is full, no more passengers accepted");
-        }
     }
 
     /**

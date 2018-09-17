@@ -138,9 +138,11 @@ public class ElevatorTest
             elevator.move();
             if (elevator.getCurrentFloor() == 4) {
                 // Check to see that the remaining passengers boarded
+                System.out.println("current floor is: " + elevator.getCurrentFloor());
+                System.out.println("assert:" + (waiting - Elevator.CAPACITY) + " == " + elevator.getPassengers());
                 checkElevator(elevator, elevator.getCurrentFloor(), waiting - Elevator.CAPACITY);
                 assertEquals(0, building.getFloor(4).getPassengersWaiting());
-            } else {
+            } else {                                            
                 checkElevator(elevator, elevator.getCurrentFloor(), 0);
             }
         }

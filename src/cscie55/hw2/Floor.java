@@ -33,8 +33,8 @@ public class Floor {
         return this.passengersWaiting;
     }
     
-     public void clearPassengersWaiting() {
-         this.passengersWaiting = 0;
+     public void clearPassengers(int boardedPassengers) {
+         this.passengersWaiting = this.passengersWaiting - boardedPassengers;
      }
 
     /**
