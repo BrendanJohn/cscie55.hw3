@@ -77,31 +77,23 @@ public class Elevator {
         }
                        
         disembarkPassengers();
-              
-        if (numPassengers < CAPACITY)
-        //only pick up waiting passengers when not at capacity
-        {
-            fillToCapacity();
-        }
-        else 
-        {
-            System.out.println("Elevator is full, no more passengers accepted");
-        }
-        //prints out the status of the elevator
+        fillToCapacity();
+        //print the status of the elevator
         this.toString();
     }
 
     public void fillToCapacity() {
     
-         if (building.getFloor(building.getCurrentFloor()).getPassengersWaiting() > 0) 
+         this.passengersWaiting = building.getFloor(building.getCurrentFloor()).getPassengersWaiting();
+         
+         //check for waiting passengers
+         if (this.passengersWaiting > 0) 
          {
-             if (building.getFloor(building.getCurrentFloor()).getPassengersWaiting() >= CAPACITY)
+             //stop and pick them up            
+             for (int i = 1; i <=this.passengersWaiting; i++) 
              {
-                 this.passengersWaiting = building.getFloor(building.getCurrentFloor()).getPassengersWaiting();
-                 for (int i = 1; i <=CAPACITY; i++) 
+                 try 
                  {
-                  try 
-                  {
                      boardPassenger(1);
                      //the passenger boarded successfully
                   }
@@ -110,27 +102,7 @@ public class Elevator {
                      //the passenger was unable to board because the elevator is full
                      System.out.println(efe.getMessage());
                   }
-                 }
-                 building.getFloor(building.getCurrentFloor()).clearPassengers(CAPACITY);  
-             }
-             else
-             {
-                 this.passengersWaiting = building.getFloor(building.getCurrentFloor()).getPassengersWaiting();
-                 for (int i = 1; i <=this.passengersWaiting; i++) 
-                 {
-                  try 
-                  {
-                     boardPassenger(1);
-                     //the passenger boarded successfully
-                  }
-                  catch (ElevatorFullException efe)
-                  {
-                     //the passenger was unable to board because the elevator is full
-                     System.out.println(efe.getMessage());
-                  }
-                 }
-                 building.getFloor(building.getCurrentFloor()).clearPassengers(this.passengersWaiting);
-             }
+              }  
          }
     }
     
@@ -150,7 +122,8 @@ public class Elevator {
                 {
                     passengersToFloor[destinationFloor - 1]++;
                     numPassengers++;
-                    System.out.println("passenger boarded");
+                    System.out.println("board a single passenger");
+                    building.getFloor(building.getCurrentFloor()).clearWaitingPassenger();
                 
                 }
             }

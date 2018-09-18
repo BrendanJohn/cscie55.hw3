@@ -23,7 +23,7 @@ public class Building {
     */
     private int currentFloor = 1;
     
-    public Elevator elevator;
+    private Elevator elevator;
     
 
     /**
@@ -54,10 +54,16 @@ public class Building {
         return this.floors[floorNumber];
     }
     
+    /**
+    * Gets the current floor number
+    */
     public int getCurrentFloor() {
         return this.currentFloor;
     }
     
+    /**
+    * Sets the current floor number
+    */
     public void setCurrentFloor(int floorNum) {
          this.currentFloor = floorNum;
     }

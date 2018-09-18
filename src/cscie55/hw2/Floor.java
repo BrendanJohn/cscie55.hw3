@@ -35,9 +35,12 @@ public class Floor {
         return this.passengersWaiting;
     }
     
-     public void clearPassengers(int boardedPassengers) {
-         this.passengersWaiting = this.passengersWaiting - boardedPassengers;
-     }
+    /**
+    * Helper method used to decrement waiting passengers
+    */
+    public void clearWaitingPassenger() {
+         this.passengersWaiting = this.passengersWaiting - 1;
+    }
 
     /**
     * HW2 Requirement: Called when a passenger on the Floor wants to wait for the Elevator
