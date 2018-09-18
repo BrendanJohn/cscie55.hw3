@@ -1,4 +1,4 @@
-package cscie55.zoo.animals;
+package cscie55.hw2.zoo.animals;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,9 +7,8 @@ import java.util.List;
 * 
 * class: Giraffe
 * name: Brendan Murphy
-* CSCIE-55 HW 1
-* date: 9/16/2018
- 
+* CSCIE-55 HW 2
+* date: 9/29/2018
 ******************************/
 public class Giraffe {
 
@@ -20,6 +19,23 @@ public class Giraffe {
     
     //public, no-argument constructor for each class that allows instances of each class to be created.
     public Giraffe(){
+        this.name = "Allen";
+        this.color = "spotted";
+        this.favoriteFoods.add("leaves");
+        this.favoriteFoods.add("branches");
+        eat(this.favoriteFoods.get(1));
+    }    
+    
+    public String eat(String favoriteFood) {
+        return ("Yum I love "+ favoriteFood);
+    }
+    
+    public String speak() {
+        return ("hello");
+    }
+    
+    public String play() {
+        return ("party!");
     }
 
 }
