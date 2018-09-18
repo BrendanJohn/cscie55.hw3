@@ -75,6 +75,8 @@ public class Elevator {
                 goingUp = true;
             }
         }
+                       
+        disembarkPassengers();
               
         if (numPassengers < CAPACITY)
         //only pick up waiting passengers when not at capacity
@@ -85,12 +87,6 @@ public class Elevator {
         {
             System.out.println("Elevator is full, no more passengers accepted");
         }
-               
-        //Clears the array entry tracking the number of passengers destined for the floor that the elevator
-        //has just arrived at
-        numPassengers = (numPassengers - passengersToFloor[building.getCurrentFloor() - 1]);
-        passengersToFloor[building.getCurrentFloor() - 1] = 0;
-
         //prints out the status of the elevator
         this.toString();
     }
@@ -178,6 +174,15 @@ public class Elevator {
         } else {
             return "Floor " + Integer.toString(building.getCurrentFloor()) + ": " + Integer.toString(numPassengers) + " passengers";
         }
+    }
+    
+    public void  disembarkPassengers() {         
+        //Clears the array entry tracking the number of passengers destined for the floor that the elevator
+        //has just arrived at
+        System.out.println(passengersToFloor[building.getCurrentFloor() - 1] + " passengers departed");
+        numPassengers = (numPassengers - passengersToFloor[building.getCurrentFloor() - 1]);
+        passengersToFloor[building.getCurrentFloor() - 1] = 0;
+        
     }
 
 
