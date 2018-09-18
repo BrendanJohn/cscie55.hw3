@@ -1,1 +1,0 @@
-memberSearchIndex = [{"p":"cscie55.hw1.elevator","c":"Elevator","l":"boardPassenger(int)"},{"p":"cscie55.hw1.elevator","c":"Elevator","l":"Elevator()"},{"p":"cscie55.hw1.elevator","c":"Elevator","l":"move()"},{"p":"cscie55.hw1.elevator","c":"Elevator","l":"toString()"}]

@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"cscie55.hw1.elevator"}]
