@@ -4,7 +4,7 @@ package cscie55.hw2;
  *
  * name: Brendan Murphy
  * CSCIE-55 HW 2
- * date: 09/25/2018
+ * date: 09/29/2018
  *
  * Defines an building class that keeps track of one elevator and multiple floors
  *******************************************************************************************************/
@@ -12,7 +12,7 @@ package cscie55.hw2;
 public class Building {
 
     /**
-    * Requirement: A static final field storing the number of floors in the building
+    * HW2 Requirement: A static final field storing the number of floors in the building
     */
     public static final int FLOORS = 7;
     
@@ -27,7 +27,7 @@ public class Building {
     
 
     /**
-    * Requirement: The Building constructor creates an Elevator, and one floor for each floor number
+    * HW2 Requirement: The Building constructor creates an Elevator, and one floor for each floor number
     * (Move the variable currentFloor that was in the Elevator class in homework 1 to the Building class.)
     */
     public Building() {
@@ -40,14 +40,14 @@ public class Building {
     }
 
     /**
-    * Requirement: Returns the building's Elevator
+    * HW2 Requirement: Returns the building's Elevator
     */
     public Elevator getElevator() {
         return this.elevator;
     }
 
     /**
-    * Requirement: Returns the Floor object for the given floor number
+    * HW2 Requirement: Returns the Floor object for the given floor number
     *@param floorNumber - Int the number of the floor
     */
     public Floor getFloor(int floorNumber) {
