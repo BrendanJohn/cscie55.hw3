@@ -85,7 +85,7 @@ public class Elevator {
     /**
     * Helper method to call board passenger once for each passenger waiting
     */
-    public void fillToCapacity() {
+    void fillToCapacity() {
     
          this.passengersWaiting = building.getFloor(building.getCurrentFloor()).getPassengersWaiting();
          
@@ -151,7 +151,7 @@ public class Elevator {
     * Helper method to clear the array entry tracking the number of passengers destined for the floor that the 
     * elevator has just arrived at
     */
-    public void  disembarkPassengers() {         
+    void  disembarkPassengers() {         
         numPassengers = (numPassengers - passengersToFloor[building.getCurrentFloor() - 1]);
         passengersToFloor[building.getCurrentFloor() - 1] = 0;
         

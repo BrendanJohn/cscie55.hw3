@@ -57,14 +57,14 @@ public class Building {
     /**
     * Gets the current floor number
     */
-    public int getCurrentFloor() {
+    int getCurrentFloor() {
         return this.currentFloor;
     }
     
     /**
     * Sets the current floor number
     */
-    public void setCurrentFloor(int floorNum) {
+    void setCurrentFloor(int floorNum) {
          this.currentFloor = floorNum;
     }
 

@@ -38,7 +38,7 @@ public class Floor {
     /**
     * Helper method used to decrement waiting passengers
     */
-    public void clearWaitingPassenger() {
+    void clearWaitingPassenger() {
          this.passengersWaiting = this.passengersWaiting - 1;
     }
 
