@@ -11,9 +11,9 @@ package cscie55.hw2;
 
 public class ElevatorFullException extends Exception  {
 
-    public ElevatorFullException() {
+    public ElevatorFullException(String message) {
         //sends a string as a message to the super class
-        super("The elevator is full");
+        super(message);
     }
 
   }
