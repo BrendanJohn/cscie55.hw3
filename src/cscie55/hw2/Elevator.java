@@ -99,12 +99,12 @@ public class Elevator {
                  {
                      boardPassenger(1);
                      //the passenger boarded successfully
-                  }
-                  catch (ElevatorFullException efe)
-                  {
-                     //the passenger was unable to board because the elevator is full
-                     System.out.println(efe.getMessage());
-                  }
+                 }
+                 catch (ElevatorFullException efe)
+                 {
+                     //handle exception 
+                     //the passenger was unable to board because the elevator is full  
+                 }
               }  
          }
     }
@@ -125,18 +125,13 @@ public class Elevator {
                 {
                     passengersToFloor[destinationFloor - 1]++;
                     numPassengers++;
-                    System.out.println("board a single passenger");
-                    building.getFloor(building.getCurrentFloor()).clearWaitingPassenger();
-                
+                    building.getFloor(building.getCurrentFloor()).clearWaitingPassenger();               
                 }
             }
             catch (ElevatorFullException efe)
             {
-                System.out.println(efe);               
-            }
-            finally
-            {
-                System.out.println("passenger boarded");  
+                //handle exception 
+                //the passenger was unable to board because the elevator is full               
             }
 
     }
@@ -157,8 +152,6 @@ public class Elevator {
     * elevator has just arrived at
     */
     public void  disembarkPassengers() {         
-        
-        System.out.println(passengersToFloor[building.getCurrentFloor() - 1] + " passengers departed");
         numPassengers = (numPassengers - passengersToFloor[building.getCurrentFloor() - 1]);
         passengersToFloor[building.getCurrentFloor() - 1] = 0;
         

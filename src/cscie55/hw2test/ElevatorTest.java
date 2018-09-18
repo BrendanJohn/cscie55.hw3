@@ -5,14 +5,6 @@ import cscie55.hw2.Elevator;
 import cscie55.hw2.ElevatorFullException;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
-/*******************************************************************************************************
- *
- * name: Brendan Murphy
- * CSCIE-55 HW 2
- * date: 09/25/2018
- *
-* Defines an elevator test class that tests the elevator class
- *******************************************************************************************************/
 
 public class ElevatorTest
 {
@@ -20,7 +12,6 @@ public class ElevatorTest
     @Test
     public void elevatorMotion()
     {
-        System.out.println("***** STARTING MOVE TEST *****");
         Building building = new Building();
         Elevator elevator = building.getElevator();
         int expectedFloorNumber = 1;
@@ -40,14 +31,12 @@ public class ElevatorTest
             checkElevator(elevator, expectedFloorNumber, 0);
         }
         assertEquals(1, expectedFloorNumber);
-        System.out.println("***** MOVE TEST COMPLETED *****");
     }
-    
+
     // Check that passengers get on and off correctly.
     @Test
     public void disembark() throws ElevatorFullException
     {
-        System.out.println("***** STARTING DISEMBARK TEST *****");
         Building building = new Building();
         Elevator elevator = building.getElevator();
         checkElevator(elevator, 1, 0);
@@ -71,15 +60,13 @@ public class ElevatorTest
         checkElevator(elevator, 6, 0);
         elevator.move();
         checkElevator(elevator, 7, 0);
-        System.out.println("***** DISEMBARK TEST COMPLETED *****");
     }
-    
+
     // Check that passengers on higher floors can call and board the elevator, and then
     // disembark on the ground floor.
     @Test
     public void call()
     {
-        System.out.println("***** STARTING HIGHER FLOORS TEST *****");
         Building building = new Building();
         Elevator elevator = building.getElevator();
         building.getFloor(3).waitForElevator();
@@ -88,26 +75,36 @@ public class ElevatorTest
         building.getFloor(6).waitForElevator();
         building.getFloor(6).waitForElevator();
         checkElevator(elevator, 1, 0);
-        elevator.move();checkElevator(elevator, 2, 0);
-        elevator.move();checkElevator(elevator, 3, 2);
-        elevator.move();checkElevator(elevator, 4, 2);
-        elevator.move();checkElevator(elevator, 5, 2);
-        elevator.move();checkElevator(elevator, 6, 5);
-        elevator.move();checkElevator(elevator, 7, 5);
-        elevator.move();checkElevator(elevator, 6, 5);
-        elevator.move();checkElevator(elevator, 5, 5);
-        elevator.move();checkElevator(elevator, 4, 5);
-        elevator.move();checkElevator(elevator, 3, 5);
-        elevator.move();checkElevator(elevator, 2, 5);
-        elevator.move();checkElevator(elevator, 1, 0);
-        System.out.println("***** HIGHER FLOORS TEST COMPLETED *****");
+        elevator.move();
+        checkElevator(elevator, 2, 0);
+        elevator.move();
+        checkElevator(elevator, 3, 2);
+        elevator.move();
+        checkElevator(elevator, 4, 2);
+        elevator.move();
+        checkElevator(elevator, 5, 2);
+        elevator.move();
+        checkElevator(elevator, 6, 5);
+        elevator.move();
+        checkElevator(elevator, 7, 5);
+        elevator.move();
+        checkElevator(elevator, 6, 5);
+        elevator.move();
+        checkElevator(elevator, 5, 5);
+        elevator.move();
+        checkElevator(elevator, 4, 5);
+        elevator.move();
+        checkElevator(elevator, 3, 5);
+        elevator.move();
+        checkElevator(elevator, 2, 5);
+        elevator.move();
+        checkElevator(elevator, 1, 0);
     }
 
     // Check handling of a full elevator.
     @Test
     public void elevatorFull()
     {
-        System.out.println("***** STARTING ELEVATOR FULL TEST *****");
         Building building = new Building();
         Elevator elevator = building.getElevator();
         // Have enough people waiting on the 4th floor to exceed elevator capacity by 50%
@@ -138,23 +135,17 @@ public class ElevatorTest
             elevator.move();
             if (elevator.getCurrentFloor() == 4) {
                 // Check to see that the remaining passengers boarded
-                System.out.println("current floor is: " + elevator.getCurrentFloor());
-                System.out.println("assert:" + (waiting - Elevator.CAPACITY) + " == " + elevator.getPassengers());
                 checkElevator(elevator, elevator.getCurrentFloor(), waiting - Elevator.CAPACITY);
                 assertEquals(0, building.getFloor(4).getPassengersWaiting());
-            } else {                                            
+            } else {
                 checkElevator(elevator, elevator.getCurrentFloor(), 0);
             }
         }
-        System.out.println("***** ELEVATOR FULL TEST COMPLETED *****");
     }
- 
+
     private void checkElevator(Elevator elevator, int floorNumber, int passengers)
-        {
-            System.out.println("elevator is expected at: Floor " + floorNumber + ", elevator is at: Floor " + elevator.getCurrentFloor());
-            System.out.println();
-            assertEquals(floorNumber, elevator.getCurrentFloor());
-            System.out.println("elevator expected to contain: " + passengers + " passengers, elevator contains: " + elevator.getPassengers() + " passengers");
-            assertEquals(passengers, elevator.getPassengers());
-          }
+    {
+        assertEquals(floorNumber, elevator.getCurrentFloor());
+        assertEquals(passengers, elevator.getPassengers());
     }
+}
