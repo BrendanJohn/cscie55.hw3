@@ -4,7 +4,7 @@ package cscie55.hw2;
  *
  * name: Brendan Murphy
  * CSCIE-55 HW 2
- * date: 09/16/2018
+ * date: 09/25/2018
  *
  * Defines an building class that keeps track of one elevator and multiple floors
  *******************************************************************************************************/
@@ -33,9 +33,10 @@ public class Building {
 
     /**
     * Requirement: Returns the Floor object for the given floor number
+    *@param floorNumber - Int the number of the floor
     */
     public Floor getFloor(int floorNumber) {
-        reurn floor;
+        return 1;
     }
 
   }
