@@ -1,4 +1,7 @@
-This is my solution for assignment 1, an Elevator class, an ElevatorTest class, and 5 zoo animals.
+This is my solution for Homework 2: Expanded Elevator Model w/ Java Exceptions / Zoo animal behaviors
+
+I made no assumption when solving the problem. I solved the problem by following the instructions and creating an algorithm that
+does x y and z.
 
 They have been packaged up into a jar file that you can download and execute with the following command:
 

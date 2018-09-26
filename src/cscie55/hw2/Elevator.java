@@ -17,6 +17,11 @@ public class Elevator {
     static final int FLOOR_COUNT = 7;
 
     /**
+    * Requirement: Final static field that stores the number of passengers that the Elevator can accommodate
+    */
+    static final int CAPACITY = 10;
+
+    /**
     * Requirement: Define a field for tracking the Elevator's current floor
     */
     private int currentFloor;
@@ -35,14 +40,30 @@ public class Elevator {
 
     private int numPassengers;
 
+    private Building building;
+
     /**
-    * Requirement: No-argument constructor that sets up the elevator's state
+    * Requirement: Replace the Elevator() constructor by Elevator(Building building)
     */
-    public Elevator() {
+    public Elevator(Building building) {
         currentFloor = 1;
         goingUp = true;
         numPassengers = 0;
         passengersToFloor = new int[FLOOR_COUNT + 1];
+    }
+
+    /**
+    * Requirement: Return the Elevator's current floor number. I.e., this is the number of the floor reached by the last call to Elevator.move()
+    */
+    public int getCurrentFloor() {
+        return this.currentFloor;
+    }
+
+    /**
+    * Requirement: Return the number of passengers currently on the Elevator.
+    */
+    public int getPassengers() {
+        return this.numPassengers;
     }
 
     /**
@@ -75,7 +96,8 @@ public class Elevator {
     }
 
     /**
-    * Requirement: This method adds to the Elevator one passenger destined for the indicated floor
+    * Requirement: Board a passenger who wants to ride to the indicated floor
+    * this method boards a single passenger and may throw an ElevatorFullException
     * @param destinationFloor an integer indicating the destination of the incoming passenger
     */
     public void boardPassenger(int destinationFloor) {
