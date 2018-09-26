@@ -22,11 +22,6 @@ public class Elevator {
     static final int CAPACITY = 10;
 
     /**
-    * Requirement: Define a field for tracking the Elevator's current floor
-    */
-    private int currentFloor;
-
-    /**
     * Requirement: Define a field for tracking the Elevator's direction of travel
     */
     private boolean goingUp;
@@ -36,7 +31,6 @@ public class Elevator {
     * that floor
     */
     private int[] passengersToFloor;
-
 
     private int numPassengers;
 
