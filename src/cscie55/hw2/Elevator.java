@@ -49,7 +49,7 @@ public class Elevator {
     * Requirement: Return the Elevator's current floor number. I.e., this is the number of the floor reached by the last call to Elevator.move()
     */
     public int getCurrentFloor() {
-        return 1;
+        return building.currentFloor;
     }
 
     /**
