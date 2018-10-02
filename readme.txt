@@ -13,6 +13,4 @@ jar -cvfm elevator.jar cscie55/hw2test/MANIFEST.MF cscie55/hw2*/*.class
 4)then run this command to execute the unit tests:
 java -jar elevator.jar cscie55.hw2test.ElevatorTest
 
-If you have any problems executing the jar please email me at bjohnmurphy1984@gmail.com
-
 Thanks, Brendan Murphy.
