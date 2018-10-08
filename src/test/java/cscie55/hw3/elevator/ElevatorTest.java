@@ -1,4 +1,4 @@
-package cscie55.hw3test;
+package cscie55.hw3.elevator;
 
 import cscie55.hw3.*;
 import org.junit.Test;
@@ -7,7 +7,7 @@ import java.util.HashSet;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class HW3ElevatorSimulationTest
+public class ElevatorTest
 {
     // Don't board any passengers. Just check that the elevator moves up and down correctly.
     @Test
@@ -197,7 +197,7 @@ public class HW3ElevatorSimulationTest
             groundFloor.waitForElevator(p[id], 4);
         }
         // Load to elevator capacity
-        Elevator elevator = building.elevator();
+        Elevator elevator = building.getElevator();
         roundTrip(elevator); // Passengers board after elevator GOES to first floor.
         // Starting on the ground floor won't do it.
         checkElevator(elevator, 1, p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7], p[8], p[9]);
