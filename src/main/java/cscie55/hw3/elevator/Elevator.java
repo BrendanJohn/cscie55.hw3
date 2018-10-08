@@ -1,8 +1,5 @@
 package cscie55.hw3.elevator;
 
-
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -57,8 +54,22 @@ public class Elevator {
     /**
      * HW2 Requirement: Return the number of passengers currently on the Elevator.
      */
-    public Set getPassengers() {
+    public Set<Passenger> getPassengers() {
         return this.passengers;
+    }
+
+    /**
+     * HW3 Requirement: Return true if the elevator is going up, false otherwise
+     */
+    public	boolean goingUp() {
+        return true;
+    }
+
+    /**
+     * HW3 Requirement: Return true if the elevator is going down, false otherwise
+     */
+    public	boolean goingDown() {
+        return true;
     }
 
     /**

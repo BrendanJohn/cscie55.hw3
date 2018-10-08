@@ -1,6 +1,9 @@
 package cscie55.hw3.elevator;
 
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * A <code>Floor</code> object represents a getFloor in a building.
  * Each Floor object has a Floor number and tracks how many people
@@ -13,6 +16,21 @@ public class Floor {
     private int floorNumber = 0;
 
     private Building building;
+
+    /**
+     * HW3 Requirement: not waiting for the elevator
+     */
+    private Set<Passenger> residents = new HashSet<>();
+
+    /**
+     * HW3 Requirement: waiting for an Elevator going up
+     */
+    private Set<Passenger> upwardBound = new HashSet<>();
+
+    /**
+     * HW3 Requirement: waiting for an Elevator going down
+     */
+    private Set<Passenger> downwardBound = new HashSet<>();
 
     private int passengersWaiting = 0;
 
