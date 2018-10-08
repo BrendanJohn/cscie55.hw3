@@ -18,7 +18,7 @@ public class Passenger {
 	static final int UNDEFINED_FLOOR = -1;
 
 	/**
-	 * HW3 Requirement: a passenger constructor that an id as a parameter
+	 * HW3 Requirement: a passenger constructor that takes an id as a parameter
 	 *
 	 *@param id - Int that will be useful in debugging
 	 */

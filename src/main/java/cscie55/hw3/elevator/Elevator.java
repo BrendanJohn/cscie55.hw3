@@ -1,10 +1,14 @@
 package cscie55.hw3.elevator;
 
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * A <code>Elevator</code> object represents an Elevator in
- * a building. 
+ * a building.
  *
  * @author
  */
@@ -28,9 +32,11 @@ public class Elevator {
      */
     private int[] passengersToFloor = new int[8];
 
-    private int numPassengers = 0;
+    private Set<Passenger> passengers = new HashSet<>();
 
     private int passengersWaiting = 0;
+
+    private Passenger passenger;
 
     private Building building;
 
@@ -51,8 +57,8 @@ public class Elevator {
     /**
      * HW2 Requirement: Return the number of passengers currently on the Elevator.
      */
-    public int getPassengers() {
-        return this.numPassengers;
+    public Set getPassengers() {
+        return this.passengers;
     }
 
     /**
@@ -117,7 +123,7 @@ public class Elevator {
     public void boardPassenger(int destinationFloor) throws ElevatorFullException {
         try
         {
-            if (numPassengers == 10)
+            if (passengers.size() == 10)
             {
                 throw new ElevatorFullException("Elevator is at capacity");
             }
