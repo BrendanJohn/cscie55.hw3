@@ -8,6 +8,70 @@ package cscie55.hw3.elevator;
  */
 
 public class Passenger {
-	
-	
+
+	private int id = 0;
+
+	private int destinationFloor = 0;
+
+	private int currentFloor = 0;
+
+	static final int UNDEFINED_FLOOR = -1;
+
+	/**
+	 * HW3 Requirement: a passenger constructor that an id as a parameter
+	 *
+	 *@param id - Int that will be useful in debugging
+	 */
+	public Passenger(int id) {
+		this.id = id;
+	}
+
+	/**
+	 * HW3 Requirement: Returns the Passenger's current floor
+	 *
+	 */
+	public int currentFloor() {
+		return this.currentFloor;
+	}
+
+	/**
+	 * HW3 Requirement: Returns the Passenger's destination floor
+	 *
+	 */
+	public int destinationFloor() {
+		return this.destinationFloor;
+	}
+
+	/**
+	 * HW3 Requirement: Sets the Passenger's destination floor
+	 * @param newDestinationFloor - Int that indicates a new destination floor
+	 *
+	 */
+	public void waitForElevator(int newDestinationFloor) {
+        this.destinationFloor = newDestinationFloor;
+	}
+
+	/**
+	 * HW3 Requirement: Sets the Passenger's current floor number to be undefined
+	 *
+	 */
+	public void boardElevator() {
+        this.currentFloor = UNDEFINED_FLOOR;
+	}
+
+	/**
+	 * HW3 Requirement: The Passenger is on an Elevator and arrives at the destination
+	 *
+	 */
+	public void arrive() {
+		this.currentFloor = this.destinationFloor;
+		this.destinationFloor = UNDEFINED_FLOOR;
+	}
+
+	/**
+	 * HW3 Requirement: method to aid in debugging
+	 */
+	public String toString() {
+		return ("passenger on board");
+	}
 }
