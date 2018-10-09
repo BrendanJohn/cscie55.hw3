@@ -50,7 +50,12 @@ public class Floor {
      * (i.e., not waiting to go up and not waiting to go down), false otherwise
      */
     boolean isResident(Passenger passenger) {
-        return true;
+        if (residents.contains(passenger)) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     /**
@@ -72,7 +77,12 @@ public class Floor {
      * by comparing destinationFloor to the floor number, the Floor class knows whether the Passenger is waiting to go up or down
      */
     public void waitForElevator(Passenger passenger, int destinationFloor) {
-
+        if (destinationFloor > this.floorNumber) {
+            upwardBound.add(passenger);
+        }
+        else {
+            downwardBound.add(passenger);
+        }
     }
 
 

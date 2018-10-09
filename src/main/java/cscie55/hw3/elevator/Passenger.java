@@ -72,6 +72,6 @@ public class Passenger {
 	 * HW3 Requirement: method to aid in debugging
 	 */
 	public String toString() {
-		return ("passenger on board");
+		return "Passenger " + (this.id) + " has boarded destination floor: " + (this.destinationFloor);
 	}
 }
