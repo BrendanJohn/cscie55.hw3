@@ -57,7 +57,7 @@ public class Floor {
      * HW3 Requirement: method adds a passenger to the Floor's resident
      */
     void enterGroundFloor(Passenger passenger) {
-
+        residents.add(passenger);
     }
 
     /**

@@ -48,13 +48,21 @@ public class Building {
 
     /**
      * HW2 Requirement: Returns the Floor object for the given floor number
-     *@param floorNumber - Int the number of the floor
+     * @param floorNumber - Int the number of the floor
      */
     public Floor getFloor(int floorNumber) {
         return this.floors[floorNumber];
     }
 
-    /**
+	/**
+	 * HW3 Requirement: Simply calls Floor.enterGroundFloor(passenger) for the Floor representing the ground floor
+	 * @param passenger - Passenger passenger entering the elevator
+	 */
+	void enter(Passenger passenger){
+		this.floors[1].enterGroundFloor(passenger);
+	}
+
+	/**
      * Gets the current floor number
      */
     int getCurrentFloor() {

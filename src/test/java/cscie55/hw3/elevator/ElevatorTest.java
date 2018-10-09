@@ -33,7 +33,7 @@ public class ElevatorTest
         }
         assertEquals(1, expectedFloorNumber);
     }
-/**
+
     // Check that passengers get on and off correctly.
     @Test
     public void disembark() throws ElevatorFullException
@@ -97,7 +97,7 @@ public class ElevatorTest
         assertTrue(building.getFloor(6).isResident(p5));
         assertTrue(building.getFloor(6).isResident(p6));
     }
-
+    /**
     // Check that passengers on higher floors can call and board the elevator, and then
     // disembark on the ground floor.
     @Test
