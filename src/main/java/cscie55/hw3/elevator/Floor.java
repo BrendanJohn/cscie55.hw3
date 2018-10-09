@@ -46,10 +46,18 @@ public class Floor {
     }
 
     /**
-     * HW2 Requirement: Returns the number of passengers on the Floor who are waiting for the Elevator
+     * HW3 Requirement: returns true if the passenger is resident on the Floor
+     * (i.e., not waiting to go up and not waiting to go down), false otherwise
      */
-    public int getPassengersWaiting() {
-        return this.passengersWaiting;
+    boolean isResident(Passenger passenger) {
+        return true;
+    }
+
+    /**
+     * HW3 Requirement: method adds a passenger to the Floor's resident
+     */
+    void enterGroundFloor(Passenger passenger) {
+
     }
 
     /**
@@ -60,11 +68,11 @@ public class Floor {
     }
 
     /**
-     * HW2 Requirement: Called when a passenger on the Floor wants to wait for the Elevator
-     * Calling this should cause the Elevator to stop the next time it moves to the Floor
+     * HW3 Requirement: This allows the Floor to know which Passenger is waiting for the Elevator
+     * by comparing destinationFloor to the floor number, the Floor class knows whether the Passenger is waiting to go up or down
      */
-    public void waitForElevator() {
-        passengersWaiting++;
+    public void waitForElevator(Passenger passenger, int destinationFloor) {
+
     }
 
 

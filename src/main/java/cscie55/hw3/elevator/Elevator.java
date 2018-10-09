@@ -93,8 +93,8 @@ public class Elevator {
             }
         }
 
-        disembarkPassengers();
-        fillToCapacity();
+        //disembarkPassengers();
+        //fillToCapacity();
         //print the status of the elevator
         this.toString();
     }
@@ -102,6 +102,7 @@ public class Elevator {
     /**
      * Helper method to call board passenger once for each passenger waiting
      */
+    /**
     void fillToCapacity() {
 
         this.passengersWaiting = building.getFloor(building.getCurrentFloor()).getPassengersWaiting();
@@ -125,6 +126,7 @@ public class Elevator {
             }
         }
     }
+     */
 
     /**
      * HW2 Requirement: Board a passenger who wants to ride to the indicated floor
@@ -141,7 +143,7 @@ public class Elevator {
             else
             {
                 passengersToFloor[destinationFloor - 1]++;
-                numPassengers++;
+                //numPassengers++;
                 building.getFloor(building.getCurrentFloor()).clearWaitingPassenger();
             }
         }
@@ -157,10 +159,10 @@ public class Elevator {
      * HW1 Requirement: indicate the number of passengers on board, and the current floor
      */
     public String toString() {
-        if (numPassengers == 1) {
-            return "Floor " + Integer.toString(building.getCurrentFloor()) + ": " + Integer.toString(numPassengers) + " passenger";
+        if (this.passengers.size() == 1) {
+            return "Floor " + Integer.toString(building.getCurrentFloor()) + ": " + Integer.toString(this.passengers.size()) + " passenger";
         } else {
-            return "Floor " + Integer.toString(building.getCurrentFloor()) + ": " + Integer.toString(numPassengers) + " passengers";
+            return "Floor " + Integer.toString(building.getCurrentFloor()) + ": " + Integer.toString(this.passengers.size()) + " passengers";
         }
     }
 
@@ -168,11 +170,12 @@ public class Elevator {
      * Helper method to clear the array entry tracking the number of passengers destined for the floor that the
      * elevator has just arrived at
      */
+/**
     void  disembarkPassengers() {
         numPassengers = (numPassengers - passengersToFloor[building.getCurrentFloor() - 1]);
         passengersToFloor[building.getCurrentFloor() - 1] = 0;
 
-    }
+    }*/
 
 
 }
