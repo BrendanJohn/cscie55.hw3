@@ -18,11 +18,6 @@ public class Building {
 
     private Floor[] floors = new Floor[FLOORS + 1];;
 
-    /**
-     * Requirement: Define a field for tracking the Elevator's current floor
-     */
-    private int currentFloor = 1;
-
     private Elevator elevator;
 
 
@@ -61,19 +56,5 @@ public class Building {
 	void enter(Passenger passenger){
 		this.floors[1].enterGroundFloor(passenger);
 	}
-
-	/**
-     * Gets the current floor number
-     */
-    int getCurrentFloor() {
-        return this.currentFloor;
-    }
-
-    /**
-     * Sets the current floor number
-     */
-    void setCurrentFloor(int floorNum) {
-        this.currentFloor = floorNum;
-    }
 
 }

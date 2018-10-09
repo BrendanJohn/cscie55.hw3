@@ -4,7 +4,7 @@ package cscie55.hw3.elevator;
  * A <code>Passenger</code> object represents a person to ride the Elevator.
  * a passengers has a ID number, knows its current Floor and its destination Floor.
  *
-
+ * @Brendan Murphy
  */
 
 public class Passenger {
@@ -72,6 +72,6 @@ public class Passenger {
 	 * HW3 Requirement: method to aid in debugging
 	 */
 	public String toString() {
-		return "Passenger " + (this.id) + " has boarded destination floor: " + (this.destinationFloor);
+		return "Passenger " + (this.id) + " has a destination floor of: " + (this.destinationFloor);
 	}
 }

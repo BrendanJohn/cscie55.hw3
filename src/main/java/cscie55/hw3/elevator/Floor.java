@@ -8,7 +8,7 @@ import java.util.Set;
  * A <code>Floor</code> object represents a getFloor in a building.
  * Each Floor object has a Floor number and tracks how many people
  * are waiting for the Elevator.
- *
+ * @Brendan Murphy
  */
 
 public class Floor {
@@ -66,6 +66,20 @@ public class Floor {
     }
 
     /**
+     * Helper method returns a collection of Passengers waiting for upward service
+     */
+    Set<Passenger> getUpwardPassengers() {
+        return upwardBound;
+    }
+
+    /**
+     * Helper method returns a collection of Passengers waiting for downward service
+     */
+    Set<Passenger> getDownwardPassengers() {
+        return this.downwardBound;
+    }
+
+    /**
      * Helper method used to decrement waiting passengers
      */
     void clearWaitingPassenger() {
@@ -78,10 +92,12 @@ public class Floor {
      */
     public void waitForElevator(Passenger passenger, int destinationFloor) {
         if (destinationFloor > this.floorNumber) {
-            upwardBound.add(passenger);
+            passenger.waitForElevator(destinationFloor);
+            this.upwardBound.add(passenger);
         }
         else {
-            downwardBound.add(passenger);
+            passenger.waitForElevator(destinationFloor);
+            this.downwardBound.add(passenger);
         }
     }
 

@@ -1,17 +1,17 @@
 package cscie55.hw3.elevator;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 /**
  * A <code>Elevator</code> object represents an Elevator in
  * a building.
  *
- * @author
+ * @Brendan Murphy
  */
 
 public class Elevator {
-
 
     /**
      * HW2 Requirement: Final static field that stores the number of passengers that the Elevator can accommodate
@@ -29,13 +29,22 @@ public class Elevator {
      */
     private int[] passengersToFloor = new int[8];
 
+    /**
+     * Requirement: Define a field for tracking the Elevator's current floor
+     */
+    private int currentFloor = 1;
+
     private Set<Passenger> passengers = new HashSet<>();
+
+    private Set<Passenger> boardingPassengers = new HashSet<>();
 
     private int passengersWaiting = 0;
 
     private Passenger passenger;
 
     private Building building;
+
+    private Floor floor;
 
     /**
      * HW2 Requirement: Replace the Elevator() constructor by Elevator(Building building)
@@ -47,8 +56,8 @@ public class Elevator {
     /**
      * HW2 Requirement: Return the Elevator's current floor number. I.e., this is the number of the floor reached by the last call to Elevator.move()
      */
-    public int getCurrentFloor() {
-        return building.getCurrentFloor();
+    int getCurrentFloor() {
+        return this.currentFloor;
     }
 
     /**
@@ -76,57 +85,64 @@ public class Elevator {
      * HW1 Requirement: Define a move() method which, when called, modifies the Elevator's state
      */
     public void move() {
-
         if (goingUp == true) {
+            requestUpwardPassengers(building.getFloor(this.currentFloor));
+            fillToCapacity(this.boardingPassengers);
             //increments the current floor
-            building.setCurrentFloor(building.getCurrentFloor() + 1);
+            this.currentFloor++;
             //modifies the direction of travel
-            if (building.getCurrentFloor() == building.FLOORS) {
+            if (this.getCurrentFloor() == building.FLOORS) {
                 goingUp = false;
             }
         } else {
+            requestDownwardPassengers(building.getFloor(this.currentFloor));
+            fillToCapacity(this.boardingPassengers);
             //decrements the current floor
-            building.setCurrentFloor(building.getCurrentFloor() - 1);
+            this.currentFloor--;
             //modifies the direction of travel
-            if (building.getCurrentFloor() == 1) {
+            if (this.getCurrentFloor() == 1) {
                 goingUp = true;
             }
         }
 
         //disembarkPassengers();
-        //fillToCapacity();
         //print the status of the elevator
         this.toString();
     }
 
     /**
+     * Helper method asks the Floor for a collection of Passengers waiting for upward service
+     */
+    void requestUpwardPassengers(Floor floor) {
+        this.boardingPassengers = floor.getUpwardPassengers();
+    }
+
+    /**
+     * Helper method asks the Floor for a collection of Passengers waiting for downward service
+     */
+    void requestDownwardPassengers(Floor floor) {
+        this.boardingPassengers = floor.getUpwardPassengers();
+    }
+
+    /**
      * Helper method to call board passenger once for each passenger waiting
      */
-    /**
-    void fillToCapacity() {
-
-        this.passengersWaiting = building.getFloor(building.getCurrentFloor()).getPassengersWaiting();
-
-        //check for waiting passengers
-        if (this.passengersWaiting > 0)
-        {
-            //stop and pick them up
-            for (int i = 1; i <=this.passengersWaiting; i++)
+    void fillToCapacity(Set boardingPassengers) {
+        Iterator<Passenger> passenger = boardingPassengers.iterator();
+        while(passenger.hasNext()){
+            try
             {
-                try
-                {
-                    boardPassenger(1);
-                    //the passenger boarded successfully
-                }
-                catch (ElevatorFullException efe)
-                {
-                    //handle exception
-                    //the passenger was unable to board because the elevator is full
-                }
+                boardPassenger(2);
+                //the passenger boarded successfully
+            }
+            catch (ElevatorFullException efe)
+            {
+                //handle exception
+                //the passenger was unable to board because the elevator is full
             }
         }
+
     }
-     */
 
     /**
      * HW2 Requirement: Board a passenger who wants to ride to the indicated floor
@@ -144,7 +160,7 @@ public class Elevator {
             {
                 passengersToFloor[destinationFloor - 1]++;
                 //numPassengers++;
-                building.getFloor(building.getCurrentFloor()).clearWaitingPassenger();
+                //building.getFloor(building.getCurrentFloor()).clearWaitingPassenger();
             }
         }
         catch (ElevatorFullException efe)
@@ -160,9 +176,9 @@ public class Elevator {
      */
     public String toString() {
         if (this.passengers.size() == 1) {
-            return "Floor " + Integer.toString(building.getCurrentFloor()) + ": " + Integer.toString(this.passengers.size()) + " passenger";
+            return "Floor " + Integer.toString(this.getCurrentFloor()) + ": " + Integer.toString(this.passengers.size()) + " passenger";
         } else {
-            return "Floor " + Integer.toString(building.getCurrentFloor()) + ": " + Integer.toString(this.passengers.size()) + " passengers";
+            return "Floor " + Integer.toString(this.getCurrentFloor()) + ": " + Integer.toString(this.passengers.size()) + " passengers";
         }
     }
 
