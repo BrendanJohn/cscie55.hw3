@@ -61,7 +61,7 @@ public class Elevator {
     }
 
     /**
-     * HW2 Requirement: Return the number of passengers currently on the Elevator.
+     * Returns a set of passengers currently on board the elevator
      */
     public Set<Passenger> getPassengers() {
         return this.passengers;
@@ -85,6 +85,9 @@ public class Elevator {
      * HW1 Requirement: Define a move() method which, when called, modifies the Elevator's state
      */
     public void move() {
+
+        disembarkPassengers(this.passengers);
+
         if (goingUp == true) {
             requestUpwardPassengers(building.getFloor(this.currentFloor));
             fillToCapacity(this.boardingPassengers);
@@ -105,9 +108,24 @@ public class Elevator {
             }
         }
 
-        //disembarkPassengers();
         //print the status of the elevator
         this.toString();
+    }
+
+
+    /**
+     * Helper method to clear the array entry tracking the number of passengers destined for the floor that the
+     * elevator has just arrived at
+     */
+    void  disembarkPassengers(Set leavingPassengers) {
+        int currentFloor = this.getCurrentFloor();
+        Iterator<Passenger> passenger = leavingPassengers.iterator();
+        while (passenger.hasNext()) {
+            if (passenger.next().destinationFloor() == currentFloor) {
+                passengers.remove(passenger.next());
+                passengersToFloor[this.getCurrentFloor()] = passengersToFloor[this.getCurrentFloor()] - 1;
+            }
+        }
     }
 
     /**
@@ -121,7 +139,7 @@ public class Elevator {
      * Helper method asks the Floor for a collection of Passengers waiting for downward service
      */
     void requestDownwardPassengers(Floor floor) {
-        this.boardingPassengers = floor.getUpwardPassengers();
+        this.boardingPassengers = floor.getDownwardPassengers();
     }
 
     /**
@@ -132,11 +150,12 @@ public class Elevator {
         while(passenger.hasNext()){
             try
             {
-                boardPassenger(2);
+                boardPassenger(passenger.next());
                 //the passenger boarded successfully
             }
             catch (ElevatorFullException efe)
             {
+                System.out.println("No more passengers");
                 //handle exception
                 //the passenger was unable to board because the elevator is full
             }
@@ -145,11 +164,11 @@ public class Elevator {
     }
 
     /**
-     * HW2 Requirement: Board a passenger who wants to ride to the indicated floor
+     * Board a passenger who wants to ride to the indicated floor
      * this method boards a single passenger and may throw an ElevatorFullException
-     * @param destinationFloor an integer indicating the destination of the incoming passenger
+     * @param boardingPassenger a passenger who wants to ride to the indicated floor
      */
-    public void boardPassenger(int destinationFloor) throws ElevatorFullException {
+    public void boardPassenger(Passenger boardingPassenger) throws ElevatorFullException {
         try
         {
             if (passengers.size() == 10)
@@ -158,8 +177,8 @@ public class Elevator {
             }
             else
             {
-                passengersToFloor[destinationFloor - 1]++;
-                //numPassengers++;
+                passengers.add(boardingPassenger);
+                passengersToFloor[boardingPassenger.destinationFloor()]++;
                 //building.getFloor(building.getCurrentFloor()).clearWaitingPassenger();
             }
         }
@@ -181,17 +200,5 @@ public class Elevator {
             return "Floor " + Integer.toString(this.getCurrentFloor()) + ": " + Integer.toString(this.passengers.size()) + " passengers";
         }
     }
-
-    /**
-     * Helper method to clear the array entry tracking the number of passengers destined for the floor that the
-     * elevator has just arrived at
-     */
-/**
-    void  disembarkPassengers() {
-        numPassengers = (numPassengers - passengersToFloor[building.getCurrentFloor() - 1]);
-        passengersToFloor[building.getCurrentFloor() - 1] = 0;
-
-    }*/
-
 
 }
