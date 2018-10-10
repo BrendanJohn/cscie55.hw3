@@ -7,7 +7,7 @@ package cscie55.hw3.elevator;
  * @Brendan Murphy
  */
 
-public class Passenger {
+public class Passenger implements Comparable<Passenger> {
 
 	private int id = 0;
 
@@ -16,6 +16,11 @@ public class Passenger {
 	private int currentFloor = 0;
 
 	static final int UNDEFINED_FLOOR = -1;
+
+	public int compareTo(Passenger p)
+	{
+		return this.id - p.id;
+	}
 
 	/**
 	 * HW3 Requirement: a passenger constructor that takes an id as a parameter

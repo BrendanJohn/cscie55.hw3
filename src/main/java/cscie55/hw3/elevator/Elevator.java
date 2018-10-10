@@ -1,7 +1,10 @@
 package cscie55.hw3.elevator;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -90,7 +93,6 @@ public class Elevator {
     public void move() {
 
         if (goingUp == true) {
-			clearBoardingPassengers();
         	//travel up one floor
 			this.currentFloor++;
 			disembarkPassengers(this.passengers);
@@ -101,7 +103,6 @@ public class Elevator {
                 goingUp = false;
             }
         } else {
-			clearBoardingPassengers();
         	//travel down one floor
 			this.currentFloor--;
         	disembarkPassengers(this.passengers);
@@ -164,7 +165,9 @@ public class Elevator {
      * Helper method to call board passenger once for each passenger waiting
      */
     void fillToCapacity(Set boardingPassengers) {
-        Iterator<Passenger> passenger = boardingPassengers.iterator();
+		List<Passenger> passengerArrayList = new ArrayList<Passenger>(boardingPassengers);
+		Collections.sort(passengerArrayList);
+		Iterator<Passenger> passenger = passengerArrayList.iterator();
         while(passenger.hasNext()){
             try
             {
@@ -189,13 +192,14 @@ public class Elevator {
     public void boardPassenger(Passenger boardingPassenger) throws ElevatorFullException {
         try
         {
-            if (passengers.size() == 10)
+            if (passengers.size() >= 10)
             {
                 throw new ElevatorFullException("Elevator is at capacity");
             }
             else
             {
                 passengers.add(boardingPassenger);
+                boardingPassengers.remove(boardingPassenger);
                 passengersToFloor[boardingPassenger.destinationFloor()]++;
                 //building.getFloor(building.getCurrentFloor()).clearWaitingPassenger();
             }

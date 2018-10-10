@@ -179,7 +179,7 @@ public class ElevatorTest
         assertTrue(building.getFloor(6).isResident(p4));
         assertTrue(building.getFloor(6).isResident(p5));
     }
-	/**
+
     // Check handling of a full elevator.
     @Test
     public void elevatorFull() throws ElevatorFullException
@@ -235,7 +235,7 @@ public class ElevatorTest
         assertTrue(floor4.isResident(p[13]));
         assertTrue(floor4.isResident(p[14]));
     }
- */
+
     private void roundTrip(Elevator elevator)
     {
         assert elevator.getCurrentFloor() == 1;
