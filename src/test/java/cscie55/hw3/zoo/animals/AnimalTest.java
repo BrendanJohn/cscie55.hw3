@@ -21,18 +21,20 @@ public class AnimalTest {
 
 	@Test
 	public void tigerTests() {
-        Tiger tiger = new Tiger();
+        Tiger tiger = new Tiger("Tony", 34, "yellow and black");
 		assertEquals("roar", tiger.speak());
 		assertEquals("weeeeee!", tiger.play());
-		assertEquals("Yum I love toast", tiger.eat());
+		assertEquals("Yum I love frosted flakes", tiger.eat());
+		assertEquals("SHHHHhhhhh", tiger.sleep());
 	}
 
 	@Test
 	public void monkeyTests() {
-		Monkey monkey = new Monkey();
+		Monkey monkey = new Monkey("George", 1 , "brown");
 		assertEquals("squeak", monkey.speak());
 		assertEquals("yayyyyyy!", monkey.play());
 		assertEquals("Yum I love banana", monkey.eat());
+		assertEquals("I am outtta here", monkey.run());
 	}
 
 	@Test
@@ -41,22 +43,25 @@ public class AnimalTest {
 		assertEquals("roarrr", cheetah.speak());
 		assertEquals("yayyy", cheetah.play());
 		assertEquals("Yum I love fish", cheetah.eat());
+		assertEquals("Everybody jump!", cheetah.jump());
 	}
 
 	@Test
 	public void giraffeTests() {
-		Giraffe giraffe = new Giraffe();
+		Giraffe giraffe = new Giraffe("Allen", 10, "Golden");
 		assertEquals("hello", giraffe.speak());
 		assertEquals("party!", giraffe.play());
 		assertEquals("Yum I love branches", giraffe.eat());
+		assertEquals("quiet I am sleeping", giraffe.sleep());
 	}
 
 	@Test
 	public void goatTests() {
-		Goat goat = new Goat();
+		Goat goat = new Goat("Henry", 50, "white");
 		assertEquals("bahhh", goat.speak());
 		assertEquals("bahhh!!!", goat.play());
 		assertEquals("Yum I love pizza", goat.eat());
+		assertEquals("catch me if you can!", goat.run());
 	}
 
 

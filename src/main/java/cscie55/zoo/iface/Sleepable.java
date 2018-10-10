@@ -1,4 +1,6 @@
-package zoo.iface;
+package cscie55.zoo.iface;
 
-public class Sleepable {
+public interface Sleepable {
+    String sleep();
+
 }

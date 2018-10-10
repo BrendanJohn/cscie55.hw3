@@ -1,5 +1,7 @@
 package cscie55.zoo.animals;
 
+import cscie55.zoo.iface.Runnable;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,17 +12,17 @@ import java.util.List;
  * CSCIE-55 HW 3
  * date: 10/11/2018
  ******************************/
-public class Monkey {
+public class Monkey extends Animal implements Runnable {
 
-	//3 fields specifying characteristics including favoriteFoods
-	private String name;
-	private String color;
+	@Override
+	public String run(){
+		return ("I am outtta here");
+	}
 	private List<String> favoriteFoods = new ArrayList<String>();
 
 	//public, no-argument constructor for each class that allows instances of each class to be created.
-	public Monkey(){
-		this.name = "Billy";
-		this.color = "gray";
+	public Monkey(String name, Integer age, String color){
+		super(name, age, color);
 		this.favoriteFoods.add("banana");
 		this.favoriteFoods.add("banana");
 	}

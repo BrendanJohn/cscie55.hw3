@@ -1,4 +1,6 @@
-package zoo.iface;
+package cscie55.zoo.iface;
 
-public class Jumpable {
+public interface Jumpable {
+    String jump();
+
 }

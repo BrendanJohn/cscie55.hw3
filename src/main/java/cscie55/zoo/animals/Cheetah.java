@@ -1,5 +1,8 @@
 package cscie55.zoo.animals;
 
+import cscie55.zoo.iface.Jumpable;
+import cscie55.zoo.iface.Runnable;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,8 +14,12 @@ import java.util.List;
  * date: 10/11/2018
  ******************************/
 
-public class Cheetah extends Animal{
+public class Cheetah extends Animal implements Jumpable {
 
+	@Override
+	public String jump(){
+		return ("Everybody jump!");
+	}
 	private List<String> favoriteFoods = new ArrayList<String>();
 
 	//public, no-argument constructor for each class that allows instances of each class to be created.
