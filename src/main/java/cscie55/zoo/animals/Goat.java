@@ -1,7 +1,6 @@
 package cscie55.zoo.animals;
 
-import cscie55.zoo.iface.Runnable;
-import cscie55.zoo.iface.Sleepable;
+import cscie55.zoo.iface.Flyable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,10 +12,10 @@ import java.util.List;
  * CSCIE-55 HW 3
  * date: 10/11/2018
  ******************************/
-public class Goat extends Animal implements Runnable {
+public class Goat extends Animal implements Flyable {
 
 	@Override
-	public String run(){
+	public String fly(){
 		return ("catch me if you can!");
 	}
 

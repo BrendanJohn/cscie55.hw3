@@ -1,7 +1,6 @@
 package cscie55.zoo.animals;
 
 import cscie55.zoo.iface.Jumpable;
-import cscie55.zoo.iface.Runnable;
 
 import java.util.ArrayList;
 import java.util.List;

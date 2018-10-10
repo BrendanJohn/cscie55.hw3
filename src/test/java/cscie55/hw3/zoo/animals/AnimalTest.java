@@ -34,7 +34,7 @@ public class AnimalTest {
 		assertEquals("squeak", monkey.speak());
 		assertEquals("yayyyyyy!", monkey.play());
 		assertEquals("Yum I love banana", monkey.eat());
-		assertEquals("I am outtta here", monkey.run());
+		assertEquals("I am outtta here", monkey.fly());
 	}
 
 	@Test
@@ -61,7 +61,7 @@ public class AnimalTest {
 		assertEquals("bahhh", goat.speak());
 		assertEquals("bahhh!!!", goat.play());
 		assertEquals("Yum I love pizza", goat.eat());
-		assertEquals("catch me if you can!", goat.run());
+		assertEquals("catch me if you can!", goat.fly());
 	}
 
 

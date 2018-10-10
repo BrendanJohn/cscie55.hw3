@@ -1,6 +1,6 @@
 package cscie55.zoo.animals;
 
-import cscie55.zoo.iface.Runnable;
+import cscie55.zoo.iface.Flyable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,10 +12,10 @@ import java.util.List;
  * CSCIE-55 HW 3
  * date: 10/11/2018
  ******************************/
-public class Monkey extends Animal implements Runnable {
+public class Monkey extends Animal implements Flyable {
 
 	@Override
-	public String run(){
+	public String fly(){
 		return ("I am outtta here");
 	}
 	private List<String> favoriteFoods = new ArrayList<String>();
