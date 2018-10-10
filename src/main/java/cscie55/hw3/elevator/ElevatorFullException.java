@@ -8,7 +8,7 @@ package cscie55.hw3.elevator;
  * the print message the code continues on it's way and does not board the
  * passenger.
  *
- * 
+ * @Brendan Murphy
  */
 
 public class ElevatorFullException extends Exception {

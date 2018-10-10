@@ -16,6 +16,7 @@ import static org.junit.Assert.assertEquals;
  * CSCIE-55 HW 3
  * date: 10/11/2018
  ******************************/
+
 public class AnimalTest {
 
 	@Test
