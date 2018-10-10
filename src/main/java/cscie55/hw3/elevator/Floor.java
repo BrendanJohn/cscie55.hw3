@@ -98,7 +98,10 @@ public class Floor {
      * by comparing destinationFloor to the floor number, the Floor class knows whether the Passenger is waiting to go up or down
      */
     public void waitForElevator(Passenger passenger, int destinationFloor) {
-        if (destinationFloor > this.floorNumber) {
+        //remove the passenger from residents
+    	residents.remove(passenger);
+    	//determine which direction the passenger is headed
+    	if (destinationFloor > this.floorNumber) {
             passenger.waitForElevator(destinationFloor);
             this.upwardBound.add(passenger);
         }

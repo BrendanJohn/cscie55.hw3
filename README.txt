@@ -1,9 +1,19 @@
 This is my solution for Homework #3: Active Passengers, Collections
 
-I solved the expanded elevator model by following the requirements to set the initial state of each class, then I adopted a pure test-driven development style versus writing any logic before. I found this method worked for me as I was initially overwhelmed with the task of writing logic to support somewhat complex elevator behavior. My strategy was to comment out all of the unit tests except one, then I wrote just enough logic to allow the test to pass. I dubbed this stlye of coding 'caveman logic' as I did not feel I was doing anything very intelligent, and I intended to refactor later when I had time. During this stage of development I made use of "System.out.println" regularly and we are now dear friends. It dawned on me at some point that I should probably implement a bit of inheritance between the elevator and building classes to pass around the currentFloor value with ease, but found that this could be accomplished with by including public getters and setters. By using this methodolgy I completed the tasks while keeping the requirements in mind and believe I have accounted for each of them. To make evaluation easier I have called out the homework 2 requirements in the jsdocs of each class.
+I solved the active passengers and collections problem by following the requirements to set the initial state of each class, then I adopted a pure test-driven development style versus writing any logic before.
+This was more or less a similar approach that I took with homework 2, however the unit tests in homework 3 are larger and required more design decisions upfront. The first decision I made was on the type
+of collection I would use to capture the three difference passenger buckets. Although the ArrayList collection is effecient, I found that it did not capture my needs in the design of the prgram. Each passenger
+has an id, a destination floor and a current floor. These three properties are more in line with an object versus a key/value pair and therefore the HashSet collection is a more suitable mechanism for storing
+and operating on complex objects. By using this methodolgy and design decisions I completed the tasks while keeping the requirements in mind and believe I have accounted for each of them.
+To make evaluation easier I have called out the homework 3 requirements in the jsdocs of each class.
 
-I created the following classes as outlined in the requirements: Elevator, Floor, Building, ElevatorFullException
-The Elevator class represents an elevator in a building that can travel up and down, stopping on floors to disembark passengers or pick them up. If a passenger tries to board a full elevator, the elevator throws an exception. The Floor class represents a single floor that the elevator can visit, it can tell the elevator how many passengers are waiting and also call the elevator. The Building class represents a building that keeps track of one elevator and multiple floors. The ElevatorFullException class is an exception that is thrown when something out of the ordinary happens, such as a passenger trying to board a full elevator.
+In addition to the homework 2 classes outlined below, I have also implemented the passenger class which is in line with the requirements.
+The Passenger class represents a person to ride the Elevator.
+The Elevator class represents an elevator in a building that can travel up and down, stopping on floors to disembark passengers or pick them up.
+If a passenger tries to board a full elevator, the elevator throws an exception.
+The Floor class represents a single floor that the elevator can visit, it can tell the elevator how many passengers are waiting and also call the elevator.
+The Building class represents a building that keeps track of one elevator and multiple floors.
+The ElevatorFullException class is an exception that is thrown when something out of the ordinary happens, such as a passenger trying to board a full elevator.
 
 In order to run the unit tests, try the following:
 1)unzip files

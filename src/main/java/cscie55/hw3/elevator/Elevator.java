@@ -90,7 +90,8 @@ public class Elevator {
     public void move() {
 
         if (goingUp == true) {
-			//travel up one floor
+			clearBoardingPassengers();
+        	//travel up one floor
 			this.currentFloor++;
 			disembarkPassengers(this.passengers);
             requestUpwardPassengers(building.getFloor(this.currentFloor));
@@ -100,7 +101,8 @@ public class Elevator {
                 goingUp = false;
             }
         } else {
-			//travel down one floor
+			clearBoardingPassengers();
+        	//travel down one floor
 			this.currentFloor--;
         	disembarkPassengers(this.passengers);
             requestDownwardPassengers(building.getFloor(this.currentFloor));
@@ -117,24 +119,32 @@ public class Elevator {
         this.toString();
     }
 
-
     /**
      * Helper method to clear the array entry tracking the number of passengers destined for the floor that the
      * elevator has just arrived at
      */
     void  disembarkPassengers(Set leavingPassengers) {
 		int currentFloor = this.getCurrentFloor();
-		//iterates over the current set of passengers and removes them if destination floor matches current floor
+		//iterates over set passengers and removes them if destination floor matches current floor
 		Iterator<Passenger> passenger = leavingPassengers.iterator();
 		while (passenger.hasNext()) {
 			Passenger person = passenger.next();
 			if (person.destinationFloor()  == currentFloor) {
 				passenger.remove();
 				passengersToFloor[this.getCurrentFloor()] = passengersToFloor[this.getCurrentFloor()] - 1;
+				//add disembarked passenger to list of floor residents
 				building.getFloor(this.currentFloor).addResident(person);
 			}
 		}
     }
+	/**
+	 * Helper method to remove all passengers from the boarding list
+	 */
+	void clearBoardingPassengers() {
+		if (this.boardingPassengers.size() >= 1){
+			this.boardingPassengers.clear();
+		}
+	}
 
     /**
      * Helper method asks the Floor for a collection of Passengers waiting for upward service
