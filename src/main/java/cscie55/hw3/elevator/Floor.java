@@ -58,6 +58,13 @@ public class Floor {
         }
     }
 
+	/**
+	 * helper method to add residents to the floor as they disembark
+	 */
+	void addResident(Passenger passenger) {
+        residents.add(passenger);
+	}
+
     /**
      * HW3 Requirement: method adds a passenger to the Floor's resident
      */

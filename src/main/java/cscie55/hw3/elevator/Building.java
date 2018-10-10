@@ -16,7 +16,7 @@ public class Building {
      */
     public static final int FLOORS = 7;
 
-    private Floor[] floors = new Floor[FLOORS + 1];;
+    private Floor[] floors = new Floor[FLOORS + 1];
 
     private Elevator elevator;
 

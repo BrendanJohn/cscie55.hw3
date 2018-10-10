@@ -38,6 +38,8 @@ public class Elevator {
 
     private Set<Passenger> boardingPassengers = new HashSet<>();
 
+	private Set<Passenger> passengersToRemove = new HashSet<>();
+
     private int passengersWaiting = 0;
 
     private Passenger passenger;
@@ -64,7 +66,8 @@ public class Elevator {
      * Returns a set of passengers currently on board the elevator
      */
     public Set<Passenger> getPassengers() {
-        return this.passengers;
+
+    	return this.passengers;
     }
 
     /**
@@ -86,24 +89,26 @@ public class Elevator {
      */
     public void move() {
 
-        disembarkPassengers(this.passengers);
-
         if (goingUp == true) {
+			//travel up one floor
+			this.currentFloor++;
+			disembarkPassengers(this.passengers);
             requestUpwardPassengers(building.getFloor(this.currentFloor));
             fillToCapacity(this.boardingPassengers);
-            //increments the current floor
-            this.currentFloor++;
             //modifies the direction of travel
             if (this.getCurrentFloor() == building.FLOORS) {
                 goingUp = false;
             }
         } else {
+			//travel down one floor
+			this.currentFloor--;
+        	disembarkPassengers(this.passengers);
             requestDownwardPassengers(building.getFloor(this.currentFloor));
             fillToCapacity(this.boardingPassengers);
-            //decrements the current floor
-            this.currentFloor--;
             //modifies the direction of travel
             if (this.getCurrentFloor() == 1) {
+				requestUpwardPassengers(building.getFloor(this.currentFloor));
+				fillToCapacity(this.boardingPassengers);
                 goingUp = true;
             }
         }
@@ -118,14 +123,17 @@ public class Elevator {
      * elevator has just arrived at
      */
     void  disembarkPassengers(Set leavingPassengers) {
-        int currentFloor = this.getCurrentFloor();
-        Iterator<Passenger> passenger = leavingPassengers.iterator();
-        while (passenger.hasNext()) {
-            if (passenger.next().destinationFloor() == currentFloor) {
-                passengers.remove(passenger.next());
-                passengersToFloor[this.getCurrentFloor()] = passengersToFloor[this.getCurrentFloor()] - 1;
-            }
-        }
+		int currentFloor = this.getCurrentFloor();
+		//iterates over the current set of passengers and removes them if destination floor matches current floor
+		Iterator<Passenger> passenger = leavingPassengers.iterator();
+		while (passenger.hasNext()) {
+			Passenger person = passenger.next();
+			if (person.destinationFloor()  == currentFloor) {
+				passenger.remove();
+				passengersToFloor[this.getCurrentFloor()] = passengersToFloor[this.getCurrentFloor()] - 1;
+				building.getFloor(this.currentFloor).addResident(person);
+			}
+		}
     }
 
     /**
