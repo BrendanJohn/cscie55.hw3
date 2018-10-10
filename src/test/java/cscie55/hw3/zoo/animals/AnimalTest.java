@@ -37,7 +37,7 @@ public class AnimalTest {
 
 	@Test
 	public void cheetahTests() {
-		Cheetah cheetah = new Cheetah();
+		Cheetah cheetah = new Cheetah("Brendan", 5, "Spotted");
 		assertEquals("roarrr", cheetah.speak());
 		assertEquals("yayyy", cheetah.play());
 		assertEquals("Yum I love fish", cheetah.eat());

@@ -11,17 +11,13 @@ import java.util.List;
  * date: 10/11/2018
  ******************************/
 
-public class Cheetah {
+public class Cheetah extends Animal{
 
-	//3 fields specifying characteristics including favoriteFoods
-	private String name;
-	private String color;
 	private List<String> favoriteFoods = new ArrayList<String>();
 
 	//public, no-argument constructor for each class that allows instances of each class to be created.
-	public Cheetah(){
-		this.name = "Brendan";
-		this.color = "yellow";
+	public Cheetah(String name, Integer age, String color){
+        super(name, age, color);
 		this.favoriteFoods.add("meat");
 		this.favoriteFoods.add("fish");
 	}
