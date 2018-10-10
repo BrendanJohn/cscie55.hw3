@@ -17,11 +17,9 @@ The ElevatorFullException class is an exception that is thrown when something ou
 
 In order to run the unit tests, try the following:
 1)unzip files
-2)navigate to the directory where Murphy_Brendan_hw2.jar was saved
-3)run this command to create an elevator jar:
-jar -cvfm elevator.jar cscie55/hw2test/MANIFEST.MF cscie55/hw2*/*.class
+2)navigate to the directory where file: elevator-1.0-SNAPSHOT-tests.jar was saved
 4)then run this command to execute the unit tests:
-java -jar elevator.jar cscie55.hw2test.ElevatorTest
+java -jar elevator-1.0-SNAPSHOT-tests.jar cscie55.hw3.elevator.ElevatorTest
 
 Thanks, Brendan Murphy.
 
