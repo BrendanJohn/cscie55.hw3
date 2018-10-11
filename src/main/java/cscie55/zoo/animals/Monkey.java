@@ -23,11 +23,10 @@ public class Monkey {
 		this.color = "gray";
 		this.favoriteFoods.add("banana");
 		this.favoriteFoods.add("banana");
-		eat(this.favoriteFoods.get(1));
 	}
 
-	public String eat(String favoriteFood) {
-		return ("Yum I love "+ favoriteFood);
+	public String eat() {
+		return ("Yum I love "+ this.favoriteFoods.get(1));
 	}
 
 	public String speak() {

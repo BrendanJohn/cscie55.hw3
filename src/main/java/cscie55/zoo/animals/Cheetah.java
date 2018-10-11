@@ -24,11 +24,10 @@ public class Cheetah {
 		this.color = "yellow";
 		this.favoriteFoods.add("meat");
 		this.favoriteFoods.add("fish");
-		eat(this.favoriteFoods.get(1));
 	}
 
-	public String eat(String favoriteFood) {
-		return ("Yum I love "+ favoriteFood);
+	public String eat() {
+		return ("Yum I love "+ this.favoriteFoods.get(1));
 	}
 
 	public String speak() {

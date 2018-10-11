@@ -23,11 +23,10 @@ public class Giraffe {
 		this.color = "spotted";
 		this.favoriteFoods.add("leaves");
 		this.favoriteFoods.add("branches");
-		eat(this.favoriteFoods.get(1));
 	}
 
-	public String eat(String favoriteFood) {
-		return ("Yum I love "+ favoriteFood);
+	public String eat() {
+		return ("Yum I love "+ this.favoriteFoods.get(1));
 	}
 
 	public String speak() {
