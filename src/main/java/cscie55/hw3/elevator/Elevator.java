@@ -16,15 +16,15 @@ import java.util.Set;
 
 public class Elevator {
 
-    /**
-     * HW2 Requirement: Final static field that stores the number of passengers that the Elevator can accommodate
-     */
-    public static final int CAPACITY = 10;
+	/**
+	 * HW2 Requirement: Final static field that stores the number of passengers that the Elevator can accommodate
+	 */
+	public static final int CAPACITY = 10;
 
-    /**
-     * HW1 Requirement: Define a field for tracking the Elevator's direction of travel
-     */
-    private boolean goingUp = true;;
+	/**
+	 * HW1 Requirement: Define a field for tracking the Elevator's direction of travel
+	 */
+	private boolean goingUp = true;
 
     /**
      * HW1 Requirement: Define an array-valued field for tracking, for each floor, the number of passengers destined for
@@ -41,15 +41,8 @@ public class Elevator {
 
     private Set<Passenger> boardingPassengers = new HashSet<>();
 
-	private Set<Passenger> passengersToRemove = new HashSet<>();
-
-    private int passengersWaiting = 0;
-
-    private Passenger passenger;
-
     private Building building;
 
-    private Floor floor;
 
     /**
      * HW2 Requirement: Replace the Elevator() constructor by Elevator(Building building)
@@ -77,22 +70,32 @@ public class Elevator {
      * HW3 Requirement: Return true if the elevator is going up, false otherwise
      */
     public	boolean goingUp() {
-        return true;
+        if (this.goingUp == true) {
+        	return true;
+		}
+		else {
+        	return false;
+		}
     }
 
     /**
      * HW3 Requirement: Return true if the elevator is going down, false otherwise
      */
-    public	boolean goingDown() {
-        return true;
-    }
+    public	boolean goingDown(){
+		if (this.goingUp == false) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
 
     /**
      * HW1 Requirement: Define a move() method which, when called, modifies the Elevator's state
      */
     public void move() {
 
-        if (goingUp == true) {
+        if (goingUp()) {
         	//travel up one floor
 			this.currentFloor++;
 			disembarkPassengers(this.passengers);
@@ -102,7 +105,8 @@ public class Elevator {
             if (this.getCurrentFloor() == building.FLOORS) {
                 goingUp = false;
             }
-        } else {
+        }
+        else {
         	//travel down one floor
 			this.currentFloor--;
         	disembarkPassengers(this.passengers);
@@ -131,6 +135,7 @@ public class Elevator {
 		while (passenger.hasNext()) {
 			Passenger person = passenger.next();
 			if (person.destinationFloor()  == currentFloor) {
+				person.arrive();
 				passenger.remove();
 				passengersToFloor[this.getCurrentFloor()] = passengersToFloor[this.getCurrentFloor()] - 1;
 				//add disembarked passenger to list of floor residents
@@ -138,14 +143,6 @@ public class Elevator {
 			}
 		}
     }
-	/**
-	 * Helper method to remove all passengers from the boarding list
-	 */
-	void clearBoardingPassengers() {
-		if (this.boardingPassengers.size() >= 1){
-			this.boardingPassengers.clear();
-		}
-	}
 
     /**
      * Helper method asks the Floor for a collection of Passengers waiting for upward service
@@ -171,7 +168,7 @@ public class Elevator {
         while(passenger.hasNext()){
             try
             {
-                boardPassenger(passenger.next());
+            	boardPassenger(passenger.next());
                 //the passenger boarded successfully
             }
             catch (ElevatorFullException efe)
@@ -198,7 +195,8 @@ public class Elevator {
             }
             else
             {
-                passengers.add(boardingPassenger);
+                boardingPassenger.boardElevator();
+            	passengers.add(boardingPassenger);
                 boardingPassengers.remove(boardingPassenger);
                 passengersToFloor[boardingPassenger.destinationFloor()]++;
                 //building.getFloor(building.getCurrentFloor()).clearWaitingPassenger();
@@ -216,11 +214,21 @@ public class Elevator {
      * HW1 Requirement: indicate the number of passengers on board, and the current floor
      */
     public String toString() {
-        if (this.passengers.size() == 1) {
-            return "Floor " + Integer.toString(this.getCurrentFloor()) + ": " + Integer.toString(this.passengers.size()) + " passenger";
-        } else {
-            return "Floor " + Integer.toString(this.getCurrentFloor()) + ": " + Integer.toString(this.passengers.size()) + " passengers";
-        }
+        if (goingDown()) {
+			if (this.passengers.size() > 1) {
+				return "Elevator is on floor " + Integer.toString(this.getCurrentFloor()) + ", heading down with " + Integer.toString(this.passengers.size()) + " passengers";
+			} else {
+				return "Elevator is on floor " + Integer.toString(this.getCurrentFloor()) + ", heading down with no passengers";
+			}
+		}
+		else {
+			if (this.passengers.size() > 1) {
+				return "Elevator is on floor " + Integer.toString(this.getCurrentFloor()) + ", heading up with " + Integer.toString(this.passengers.size()) + " passengers";
+			} else {
+				return "Elevator is on floor " + Integer.toString(this.getCurrentFloor()) + ", heading up with no passengers";
+			}
+		}
+
     }
 
 }

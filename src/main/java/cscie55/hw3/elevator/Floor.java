@@ -87,13 +87,6 @@ public class Floor {
     }
 
     /**
-     * Helper method used to decrement waiting passengers
-     */
-    void clearWaitingPassenger() {
-        this.passengersWaiting = this.passengersWaiting - 1;
-    }
-
-    /**
      * HW3 Requirement: This allows the Floor to know which Passenger is waiting for the Elevator
      * by comparing destinationFloor to the floor number, the Floor class knows whether the Passenger is waiting to go up or down
      */

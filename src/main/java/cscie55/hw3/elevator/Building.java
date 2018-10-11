@@ -6,7 +6,7 @@ package cscie55.hw3.elevator;
  * in a static int. A building knows the state of each Floor object as
  * well as it's Elevator.
  *
- *
+ * @Brendan Murphy
  */
 
 public class Building {
