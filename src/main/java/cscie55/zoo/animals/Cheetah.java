@@ -22,6 +22,10 @@ public class Cheetah extends Animal implements Jumpable {
 	private List<String> favoriteFoods = new ArrayList<String>();
 
 	//public, no-argument constructor for each class that allows instances of each class to be created.
+	public Cheetah(){
+
+	}
+
 	public Cheetah(String name, Integer age, String color){
         super(name, age, color);
 		this.favoriteFoods.add("meat");

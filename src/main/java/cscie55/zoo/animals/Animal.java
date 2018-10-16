@@ -12,6 +12,13 @@ public abstract class Animal {
     private int age;
     private String color;
 
+    //default constructor
+    public Animal () {
+        this.name = "Joey";
+        this.age = 22;
+        this.color = "red";
+    }
+
     public Animal (String name, Integer age, String color) {
         this.name = name;
         this.age = age;

@@ -25,6 +25,9 @@ public class Tiger extends Animal implements Sleepable {
 	private List<String> favoriteFoods = new ArrayList<String>();
 
 	//public, no-argument constructor for each class that allows instances of each class to be created.
+	public Tiger(){
+
+	}
 	public Tiger(String name, Integer age, String color){
 		super(name, age, color);
 		this.favoriteFoods.add("bacon");
