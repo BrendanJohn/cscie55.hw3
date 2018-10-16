@@ -1,11 +1,6 @@
 This is my solution for Homework #3: Active Passengers, Collections
 
-I solved the active passengers and collections problem by following the requirements to set the initial state of each class, then I adopted a pure test-driven development style versus writing any logic before.
-This was more or less a similar approach that I took with homework 2, however the unit tests in homework 3 are larger and required more design decisions upfront. The first decision I made was on the type
-of collection I would use to capture the three difference passenger buckets. Although the ArrayList collection is effecient, I found that it did not capture my needs in the design of the prgram. Each passenger
-has an id, a destination floor and a current floor. These three properties are more in line with an object versus a key/value pair and therefore the HashSet collection is a more suitable mechanism for storing
-and operating on complex objects. By using this methodolgy and design decisions I completed the tasks while keeping the requirements in mind and believe I have accounted for each of them.
-To make evaluation easier I have called out the homework 3 requirements in the jsdocs of each class.
+I solved the active passengers and collections problem by following the requirements to set the initial state of each class, then I adopted a pure test-driven development style versus writing any logic before. This was more or less a similar approach that I took with homework 2, however the unit tests in homework 3 are larger and required more design decisions upfront. The first decision I made was on the type of collection I would use to capture the three difference passenger buckets. Although the ArrayList collection is effecient, I found that it did not capture my needs in the design of the prgram. Each passenger has an id, a destination floor and a current floor. These three properties are more in line with an object versus a key/value pair and therefore the HashSet collection is a more suitable mechanism for storing and operating on complex objects. By using this methodolgy and design decisions I completed the tasks while keeping the requirements in mind and believe I have accounted for each of them. To make evaluation easier I have called out the homework 3 requirements in the jsdocs of each class.
 
 In addition to the homework 2 classes outlined below, I have also implemented the passenger class which is in line with the requirements.
 The Passenger class represents a person to ride the Elevator.
@@ -18,8 +13,9 @@ The ElevatorFullException class is an exception that is thrown when something ou
 In order to run the unit tests, try the following:
 1)unzip files
 2)navigate to the directory where file: elevator-1.0-SNAPSHOT-tests.jar was saved
-4)then run this command to execute the unit tests:
+4)then run these commands to execute the unit tests:
 java -jar elevator-1.0-SNAPSHOT-tests.jar cscie55.hw3.elevator.ElevatorTest
+java -jar elevator-1.0-SNAPSHOT-tests.jar cscie55.hw3.zoo.animals.AnimalTes
 
 Thanks, Brendan Murphy.
 
